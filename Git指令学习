@@ -1,0 +1,134 @@
+Git命令
+
+1. git init， 创建版本库，将当前目录变成git管理仓库
+
+2. git add 文件xxx， 将文件xxx添加到仓库
+
+3. git commit -m “提交说明”， 告知git，将文件提交到仓库
+
+4. git status，查看当前仓库状态
+
+5. git diff 文件xxx，查看文件xxx修改的内容
+    如果git status告诉你有文件被修改过，用git diff可以查看修改内容。
+    git diff HEAD -- 文件xxx，查看工作区和版本库里最新版本的区别。
+
+6. git log，查看commit提交的历史记录
+    加参数  --pretty=oneline 简洁显示提交历史记录，每次提交显示一行
+
+7. 版本回退，
+   方法一：
+     git reset --hard HEAD^ 退回上个版本
+     git中 HEAD 表示当前版本，
+     上一个版本为 HEAD^，
+     上上个版本是 HEAD^^，
+     往前100个版本写成 HEAD~100
+   方法二：
+     git reset --hard 1094a
+     1094a 为commit id号的前缀
+
+8. git reflog 查看历史命令
+
+9. git checkout -- 文件xxx，把文件xxx在工作区的修改全部撤销
+   回退到最近一次 git commit 或 git add时的状态
+   命令中 “--” 很重要，没有 “--” 变成“切换到另一分支”的命令
+
+10. git reset HEAD <file>，撤销暂存区的修改，回到工作区
+   想彻底丢弃修改，还要执行 git checkout -- <file> 撤销工作区修改
+
+11. 删除文件，git rm <file>
+   删除后，执行 git commit 提交
+
+12. git remote add origin https://github.com/ALittleBaby/learngit.git
+   将本地库关联到 github 远程库，learngit为在github上新建的repository （仓库）
+
+13. 将本地库内容推送到远程库
+   git push -u origin master
+   加上 -u 参数，因为远程库是空的，第一次推送加 -u 将本地master分支与远程master分支关联起来。
+   以后提交直接用命令：git push origin master
+
+以上，分布式版本库建起来了！
+
+14. 从远程库客隆
+   git clone git@github.com:ALittleBaby/gitskills.git
+   Git 支持多种协议，包括https，但通过ssh支持的原生git协议速度最快
+
+15. git checkout -b dev, 创建dev分支，并切换到dev分支
+   相当于两条指令：
+   git branch dev 建立分支dev
+   git checkout dev 切换到dev分支
+
+16. git branch，查看当前分支
+   列出所有分支，当前分支前会标一个*号
+
+17. git merge dev，合并dev分支到当前的master分支上
+
+18. git branch -d dev， 删除dev分支
+
+19. git switch -c dev，创建并切换到新的dev分支
+   git switch 新的切换分支命令，更安全
+   因为git checkout -- <file> 是撤销修改的命令。
+   也相当于两条指令：
+   git branch dev 建立新分支dev
+   git switch dev 切换到dev分支。
+
+20. git switch master, 切换到master分支
+
+21. git log --graph，查看分支合并图
+
+22. git merge 的 --no-ff 参数
+   禁用Fast forward 模式，merge时生成一个新的commit，这样可以从分支历史中查看分支信息；
+   git merge --no-ff -m "<note>" <branch name>
+   git log 查看分支历史
+
+23. git stash，将当前工作现场储藏起来，等以后恢复现场继续工作
+
+24. git stash list，查看保存的工作现场
+
+25. 恢复工作现场，方法一：
+   git stash apply 恢复；
+   git stash drop 删除保存的现场。
+   恢复到指定现场：git stash apply stash@{0}
+
+26. 恢复工作现场，方法二：
+   git stash pop 恢复的同时删除保存的现场。
+
+27. git cherry-pick <commit id 前缀>，复制一个特定提交内容到当前分支
+
+28. 删除未合并过的分支
+    git branch -D <name>
+    合并过的分支删除使用：git branch -d <name>
+
+29. git remote，查看远程库信息
+   git remote -v，查看更详细信息
+
+30. 推送分支-推送本地提交到远程库
+   git push origin master，master为branch名
+
+31.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
